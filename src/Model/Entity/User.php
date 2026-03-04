@@ -9,8 +9,9 @@ use Cake\ORM\Entity;
  * User Entity
  *
  * @property int $id
+ * @property string|null $full_name
  * @property string $username
- * @property string|null $password
+ * @property string $password
  * @property \Cake\I18n\DateTime $created
  * @property \Cake\I18n\DateTime|null $modified
  */
@@ -26,6 +27,7 @@ class User extends Entity
      * @var array<string, bool>
      */
     protected array $_accessible = [
+        'full_name' => true,
         'username' => true,
         'password' => true,
         'created' => true,

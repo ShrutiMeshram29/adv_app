@@ -55,6 +55,11 @@ class UsersTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
+            ->scalar('full_name')
+            ->maxLength('full_name', 100)
+            ->allowEmptyString('full_name');
+
+        $validator
             ->scalar('username')
             ->maxLength('username', 50)
             ->requirePresence('username', 'create')
@@ -63,7 +68,8 @@ class UsersTable extends Table
         $validator
             ->scalar('password')
             ->maxLength('password', 255)
-            ->allowEmptyString('password');
+            ->requirePresence('password', 'create')
+            ->notEmptyString('password');
 
         return $validator;
     }
