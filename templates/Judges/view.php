@@ -4,41 +4,55 @@
  * @var \App\Model\Entity\Judge $judge
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Judge'), ['action' => 'edit', $judge->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Judge'), ['action' => 'delete', $judge->id], ['confirm' => __('Are you sure you want to delete # {0}?', $judge->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Judges'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Judge'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+
+<?php
+$this->assign('title', __('Judge'));
+$this->Breadcrumbs->add([
+    ['title' => __('Home'), 'url' => '/'],
+    ['title' => __('List Judges'), 'url' => ['action' => 'index']],
+    ['title' => __('View')],
+]);
+?>
+
+<div class="view card card-primary card-outline">
+    <div class="card-header d-sm-flex">
+        <h2 class="card-title"><?= h($judge->name) ?></h2>
+    </div>
+    <div class="card-body table-responsive p-0">
+        <table class="table table-hover text-nowrap">
+            <tr>
+                <th><?= __('Name') ?></th>
+                <td><?= h($judge->name) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Designation Name') ?></th>
+                <td><?= h($judge->designation_name) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Id') ?></th>
+                <td><?= $this->Number->format($judge->id) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Created') ?></th>
+                <td><?= h($judge->created) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Modified') ?></th>
+                <td><?= h($judge->modified) ?></td>
+            </tr>
+        </table>
+    </div>
+    <div class="card-footer d-flex">
+        <div class="mr-auto">
+            <?= $this->Form->postLink(
+                __('Delete'),
+                ['action' => 'delete', $judge->id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $judge->id), 'class' => 'btn btn-danger']
+            ) ?>
         </div>
-    </aside>
-    <div class="column column-80">
-        <div class="judges view content">
-            <h3><?= h($judge->name) ?></h3>
-            <table>
-                <tr>
-                    <th><?= __('Name') ?></th>
-                    <td><?= h($judge->name) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Designation Name') ?></th>
-                    <td><?= h($judge->designation_name) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Id') ?></th>
-                    <td><?= $this->Number->format($judge->id) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Created') ?></th>
-                    <td><?= h($judge->created) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Modified') ?></th>
-                    <td><?= h($judge->modified) ?></td>
-                </tr>
-            </table>
+        <div class="ml-auto">
+            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $judge->id], ['class' => 'btn btn-secondary']) ?>
+            <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default']) ?>
         </div>
     </div>
 </div>

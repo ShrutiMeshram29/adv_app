@@ -22,8 +22,8 @@ class JudgesFixture extends TestFixture
                 'id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
                 'designation_name' => 'Lorem ipsum dolor sit amet',
-                'created' => 1772643457,
-                'modified' => 1772643457,
+                'created' => 1772649233,
+                'modified' => 1772649233,
             ],
         ];
         parent::init();
