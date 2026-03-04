@@ -14,6 +14,8 @@ use Cake\ORM\Entity;
  * @property string $password
  * @property \Cake\I18n\DateTime $created
  * @property \Cake\I18n\DateTime|null $modified
+ *
+ * @property \App\Model\Entity\Agency[] $agencies
  */
 class User extends Entity
 {
@@ -32,6 +34,7 @@ class User extends Entity
         'password' => true,
         'created' => true,
         'modified' => true,
+        'agencies' => true,
     ];
 
     /**

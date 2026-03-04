@@ -11,6 +11,8 @@ use Cake\Validation\Validator;
 /**
  * Agencies Model
  *
+ * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsToMany $Users
+ *
  * @method \App\Model\Entity\Agency newEmptyEntity()
  * @method \App\Model\Entity\Agency newEntity(array $data, array $options = [])
  * @method array<\App\Model\Entity\Agency> newEntities(array $data, array $options = [])

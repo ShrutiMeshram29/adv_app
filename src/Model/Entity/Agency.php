@@ -12,6 +12,8 @@ use Cake\ORM\Entity;
  * @property string $name
  * @property \Cake\I18n\DateTime $created
  * @property \Cake\I18n\DateTime|null $modified
+ *
+ * @property \App\Model\Entity\User[] $users
  */
 class Agency extends Entity
 {
@@ -28,5 +30,6 @@ class Agency extends Entity
         'name' => true,
         'created' => true,
         'modified' => true,
+        'users' => true,
     ];
 }
