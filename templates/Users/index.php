@@ -12,6 +12,7 @@
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
+                    <th><?= $this->Paginator->sort('full_name') ?></th>
                     <th><?= $this->Paginator->sort('username') ?></th>
                     <th><?= $this->Paginator->sort('created') ?></th>
                     <th><?= $this->Paginator->sort('modified') ?></th>
@@ -22,6 +23,7 @@
                 <?php foreach ($users as $user): ?>
                 <tr>
                     <td><?= $this->Number->format($user->id) ?></td>
+                    <td><?= h($user->full_name) ?></td>
                     <td><?= h($user->username) ?></td>
                     <td><?= h($user->created) ?></td>
                     <td><?= h($user->modified) ?></td>

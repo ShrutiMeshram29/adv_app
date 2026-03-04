@@ -19,6 +19,10 @@
             <h3><?= h($user->username) ?></h3>
             <table>
                 <tr>
+                    <th><?= __('Full Name') ?></th>
+                    <td><?= h($user->full_name) ?></td>
+                </tr>
+                <tr>
                     <th><?= __('Username') ?></th>
                     <td><?= h($user->username) ?></td>
                 </tr>
