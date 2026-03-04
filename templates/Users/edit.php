@@ -2,6 +2,7 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User $user
+ * @var string[]|\Cake\Collection\CollectionInterface $agencies
  */
 ?>
 <div class="row">
@@ -25,6 +26,7 @@
                     echo $this->Form->control('full_name');
                     echo $this->Form->control('username');
                     echo $this->Form->control('password');
+                    echo $this->Form->control('agencies._ids', ['options' => $agencies]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

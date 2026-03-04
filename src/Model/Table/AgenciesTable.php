@@ -44,6 +44,12 @@ class AgenciesTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->belongsToMany('Users', [
+            'foreignKey' => 'agency_id',
+            'targetForeignKey' => 'user_id',
+            'joinTable' => 'agencies_users',
+        ]);
     }
 
     /**

@@ -32,7 +32,7 @@ class AgenciesController extends AppController
      */
     public function view($id = null)
     {
-        $agency = $this->Agencies->get($id, contain: []);
+        $agency = $this->Agencies->get($id, contain: ['Users']);
         $this->set(compact('agency'));
     }
 
@@ -53,7 +53,8 @@ class AgenciesController extends AppController
             }
             $this->Flash->error(__('The agency could not be saved. Please, try again.'));
         }
-        $this->set(compact('agency'));
+        $users = $this->Agencies->Users->find('list', limit: 200)->all();
+        $this->set(compact('agency', 'users'));
     }
 
     /**
@@ -65,7 +66,7 @@ class AgenciesController extends AppController
      */
     public function edit($id = null)
     {
-        $agency = $this->Agencies->get($id, contain: []);
+        $agency = $this->Agencies->get($id, contain: ['Users']);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $agency = $this->Agencies->patchEntity($agency, $this->request->getData());
             if ($this->Agencies->save($agency)) {
@@ -75,7 +76,8 @@ class AgenciesController extends AppController
             }
             $this->Flash->error(__('The agency could not be saved. Please, try again.'));
         }
-        $this->set(compact('agency'));
+        $users = $this->Agencies->Users->find('list', limit: 200)->all();
+        $this->set(compact('agency', 'users'));
     }
 
     /**

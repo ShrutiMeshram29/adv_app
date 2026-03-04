@@ -23,6 +23,8 @@ class AgenciesControllerTest extends TestCase
      */
     protected array $fixtures = [
         'app.Agencies',
+        'app.Users',
+        'app.AgenciesUsers',
     ];
 
     /**

@@ -2,6 +2,7 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Agency $agency
+ * @var string[]|\Cake\Collection\CollectionInterface $users
  */
 ?>
 <div class="row">
@@ -23,6 +24,7 @@
                 <legend><?= __('Edit Agency') ?></legend>
                 <?php
                     echo $this->Form->control('name');
+                    echo $this->Form->control('users._ids', ['options' => $users]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

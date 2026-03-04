@@ -39,6 +39,42 @@
                     <td><?= h($user->modified) ?></td>
                 </tr>
             </table>
+            <div class="related">
+                <h4><?= __('Related Agencies') ?></h4>
+                <?php if (!empty($user->agencies)) : ?>
+                <div class="table-responsive">
+                    <table>
+                        <tr>
+                            <th><?= __('Id') ?></th>
+                            <th><?= __('Name') ?></th>
+                            <th><?= __('Created') ?></th>
+                            <th><?= __('Modified') ?></th>
+                            <th class="actions"><?= __('Actions') ?></th>
+                        </tr>
+                        <?php foreach ($user->agencies as $agency) : ?>
+                        <tr>
+                            <td><?= h($agency->id) ?></td>
+                            <td><?= h($agency->name) ?></td>
+                            <td><?= h($agency->created) ?></td>
+                            <td><?= h($agency->modified) ?></td>
+                            <td class="actions">
+                                <?= $this->Html->link(__('View'), ['controller' => 'Agencies', 'action' => 'view', $agency->id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['controller' => 'Agencies', 'action' => 'edit', $agency->id]) ?>
+                                <?= $this->Form->postLink(
+                                    __('Delete'),
+                                    ['controller' => 'Agencies', 'action' => 'delete', $agency->id],
+                                    [
+                                        'method' => 'delete',
+                                        'confirm' => __('Are you sure you want to delete # {0}?', $agency->id),
+                                    ]
+                                ) ?>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 </div>
