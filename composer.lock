@@ -3,7 +3,8 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
-    ], "content-hash": "c52b4e0c9a7cab50dc2db857564891a0",
+    ],
+    "content-hash": "617400ac75131e6e5cdbf54adffd4a30",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",

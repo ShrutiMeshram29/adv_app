@@ -17,7 +17,8 @@
         "cakephp/cakephp-codesniffer": "^5.3",
         "cakephp/debug_kit": "^5.2",
         "josegonzalez/dotenv": "^4.0",
-        "phpunit/phpunit": "^11.5.3 || ^12.1.3 || ^13.0"
+        bin/cake cakelte install        "phpunit/phpunit": "^11.5.3 || ^12.1.3 || ^13.0",
+        "squizlabs/php_codesniffer": "^4.0"
     },
     "suggest": {
         "cakephp/repl": "Console tools for a REPL interface for CakePHP applications.",
