@@ -6,9 +6,9 @@ namespace App\Test\Fixture;
 use Cake\TestSuite\Fixture\TestFixture;
 
 /**
- * AgenciesFixture
+ * JudgesFixture
  */
-class AgenciesFixture extends TestFixture
+class JudgesFixture extends TestFixture
 {
     /**
      * Init method
@@ -21,8 +21,9 @@ class AgenciesFixture extends TestFixture
             [
                 'id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
-                'created' => 1772636982,
-                'modified' => 1772636982,
+                'designation_name' => 'Lorem ipsum dolor sit amet',
+                'created' => 1772643457,
+                'modified' => 1772643457,
             ],
         ];
         parent::init();
