@@ -2,33 +2,37 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Agency $agency
- * @var string[]|\Cake\Collection\CollectionInterface $users
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
+
+<?php
+$this->assign('title', __('Edit Agency'));
+$this->Breadcrumbs->add([
+    ['title' => __('Home'), 'url' => '/'],
+    ['title' => __('List Agencies'), 'url' => ['action' => 'index']],
+    ['title' => __('View'), 'url' => ['action' => 'view', $agency->id]],
+    ['title' => __('Edit')],
+]);
+?>
+
+<div class="card card-primary card-outline">
+    <?= $this->Form->create($agency) ?>
+    <div class="card-body">
+        <?= $this->Form->control('name') ?>
+        <?= $this->Form->control('users._ids', ['options' => $users]) ?>
+    </div>
+    <div class="card-footer d-flex">
+        <div class="mr-auto">
             <?= $this->Form->postLink(
                 __('Delete'),
                 ['action' => 'delete', $agency->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $agency->id), 'class' => 'side-nav-item']
+                ['confirm' => __('Are you sure you want to delete # {0}?', $agency->id), 'class' => 'btn btn-danger']
             ) ?>
-            <?= $this->Html->link(__('List Agencies'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
-    </aside>
-    <div class="column column-80">
-        <div class="agencies form content">
-            <?= $this->Form->create($agency) ?>
-            <fieldset>
-                <legend><?= __('Edit Agency') ?></legend>
-                <?php
-                    echo $this->Form->control('name');
-                    echo $this->Form->control('users._ids', ['options' => $users]);
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
+        <div class="ml-auto">
+            <?= $this->Form->button(__('Save'), ['class' => 'btn btn-primary']) ?>
+            <?= $this->Html->link(__('Cancel'), ['action' => 'view', $agency->id], ['class' => 'btn btn-default']) ?>
         </div>
     </div>
+    <?= $this->Form->end() ?>
 </div>

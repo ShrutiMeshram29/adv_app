@@ -23,8 +23,8 @@ class CourtCasesFixture extends TestFixture
                 'name' => 'Lorem ipsum dolor sit amet',
                 'petitioner' => 'Lorem ipsum dolor sit amet',
                 'respondent' => 'Lorem ipsum dolor sit amet',
-                'created' => 1772643689,
-                'modified' => 1772643689,
+                'created' => 1772670616,
+                'modified' => 1772670616,
             ],
         ];
         parent::init();

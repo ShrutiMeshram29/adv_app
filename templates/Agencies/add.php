@@ -2,28 +2,29 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Agency $agency
- * @var \Cake\Collection\CollectionInterface|string[] $users
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Agencies'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column column-80">
-        <div class="agencies form content">
-            <?= $this->Form->create($agency) ?>
-            <fieldset>
-                <legend><?= __('Add Agency') ?></legend>
-                <?php
-                    echo $this->Form->control('name');
-                    echo $this->Form->control('users._ids', ['options' => $users]);
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
+
+<?php
+$this->assign('title', __('Add Agency'));
+$this->Breadcrumbs->add([
+    ['title' => __('Home'), 'url' => '/'],
+    ['title' => __('List Agencies'), 'url' => ['action' => 'index']],
+    ['title' => __('Add')],
+]);
+?>
+
+<div class="card card-primary card-outline">
+    <?= $this->Form->create($agency, ['valueSources' => ['query', 'context']]) ?>
+    <div class="card-body">
+        <?= $this->Form->control('name') ?>
+        <?= $this->Form->control('users._ids', ['options' => $users]) ?>
+    </div>
+    <div class="card-footer d-flex">
+        <div class="ml-auto">
+            <?= $this->Form->button(__('Save'), ['class' => 'btn btn-primary']) ?>
+            <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default']) ?>
         </div>
     </div>
+    <?= $this->Form->end() ?>
 </div>

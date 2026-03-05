@@ -25,8 +25,8 @@ class RoomsFixture extends TestFixture
                 'address2' => 'Lorem ipsum dolor sit amet',
                 'address3' => 'Lorem ipsum dolor sit amet',
                 'city_name' => 'Lorem ipsum dolor sit amet',
-                'created' => 1772643659,
-                'modified' => 1772643659,
+                'created' => 1772670626,
+                'modified' => 1772670626,
                 'state' => 'Lorem ipsum dolor sit amet',
             ],
         ];

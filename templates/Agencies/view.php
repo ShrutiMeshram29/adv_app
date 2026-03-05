@@ -4,77 +4,97 @@
  * @var \App\Model\Entity\Agency $agency
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Agency'), ['action' => 'edit', $agency->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Agency'), ['action' => 'delete', $agency->id], ['confirm' => __('Are you sure you want to delete # {0}?', $agency->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Agencies'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Agency'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+
+<?php
+$this->assign('title', __('Agency'));
+$this->Breadcrumbs->add([
+    ['title' => __('Home'), 'url' => '/'],
+    ['title' => __('List Agencies'), 'url' => ['action' => 'index']],
+    ['title' => __('View')],
+]);
+?>
+
+<div class="view card card-primary card-outline">
+    <div class="card-header d-sm-flex">
+        <h2 class="card-title"><?= h($agency->name) ?></h2>
+    </div>
+    <div class="card-body table-responsive p-0">
+        <table class="table table-hover text-nowrap">
+            <tr>
+                <th><?= __('Name') ?></th>
+                <td><?= h($agency->name) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Id') ?></th>
+                <td><?= $this->Number->format($agency->id) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Created') ?></th>
+                <td><?= h($agency->created) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Modified') ?></th>
+                <td><?= h($agency->modified) ?></td>
+            </tr>
+        </table>
+    </div>
+    <div class="card-footer d-flex">
+        <div class="mr-auto">
+            <?= $this->Form->postLink(
+                __('Delete'),
+                ['action' => 'delete', $agency->id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $agency->id), 'class' => 'btn btn-danger']
+            ) ?>
         </div>
-    </aside>
-    <div class="column column-80">
-        <div class="agencies view content">
-            <h3><?= h($agency->name) ?></h3>
-            <table>
-                <tr>
-                    <th><?= __('Name') ?></th>
-                    <td><?= h($agency->name) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Id') ?></th>
-                    <td><?= $this->Number->format($agency->id) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Created') ?></th>
-                    <td><?= h($agency->created) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Modified') ?></th>
-                    <td><?= h($agency->modified) ?></td>
-                </tr>
-            </table>
-            <div class="related">
-                <h4><?= __('Related Users') ?></h4>
-                <?php if (!empty($agency->users)) : ?>
-                <div class="table-responsive">
-                    <table>
-                        <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('Full Name') ?></th>
-                            <th><?= __('Username') ?></th>
-                            <th><?= __('Password') ?></th>
-                            <th><?= __('Created') ?></th>
-                            <th><?= __('Modified') ?></th>
-                            <th class="actions"><?= __('Actions') ?></th>
-                        </tr>
-                        <?php foreach ($agency->users as $user) : ?>
-                        <tr>
-                            <td><?= h($user->id) ?></td>
-                            <td><?= h($user->full_name) ?></td>
-                            <td><?= h($user->username) ?></td>
-                            <td><?= h($user->password) ?></td>
-                            <td><?= h($user->created) ?></td>
-                            <td><?= h($user->modified) ?></td>
-                            <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $user->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'Users', 'action' => 'edit', $user->id]) ?>
-                                <?= $this->Form->postLink(
-                                    __('Delete'),
-                                    ['controller' => 'Users', 'action' => 'delete', $user->id],
-                                    [
-                                        'method' => 'delete',
-                                        'confirm' => __('Are you sure you want to delete # {0}?', $user->id),
-                                    ]
-                                ) ?>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </table>
-                </div>
-                <?php endif; ?>
-            </div>
+        <div class="ml-auto">
+            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $agency->id], ['class' => 'btn btn-secondary']) ?>
+            <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default']) ?>
         </div>
+    </div>
+</div>
+
+<div class="related related-user view card">
+    <div class="card-header d-flex">
+        <h3 class="card-title"><?= __('Related Users') ?></h3>
+        <div class="ml-auto">
+            <?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add', '?' => ['agency_id' => $agency->id]], ['class' => 'btn btn-primary btn-sm']) ?>
+            <?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
+        </div>
+    </div>
+    <div class="card-body table-responsive p-0">
+        <table class="table table-hover text-nowrap">
+            <tr>
+                <th><?= __('Id') ?></th>
+                <th><?= __('Full Name') ?></th>
+                <th><?= __('Username') ?></th>
+                <th><?= __('Password') ?></th>
+                <th><?= __('Created') ?></th>
+                <th><?= __('Modified') ?></th>
+                <th class="actions"><?= __('Actions') ?></th>
+            </tr>
+            <?php if (empty($agency->users)) : ?>
+                <tr>
+                    <td colspan="7" class="text-muted">
+                        <?= __('Users record not found!') ?>
+                    </td>
+                </tr>
+            <?php else : ?>
+                <?php foreach ($agency->users as $user) : ?>
+                    <tr>
+                        <td><?= h($user->id) ?></td>
+                        <td><?= h($user->full_name) ?></td>
+                        <td><?= h($user->username) ?></td>
+                        <td><?= h($user->password) ?></td>
+                        <td><?= h($user->created) ?></td>
+                        <td><?= h($user->modified) ?></td>
+                        <td class="actions">
+                            <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $user->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+                            <?= $this->Html->link(__('Edit'), ['controller' => 'Users', 'action' => 'edit', $user->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['controller' => 'Users', 'action' => 'delete', $user->id], ['class' => 'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </table>
     </div>
 </div>

@@ -4,34 +4,39 @@
  * @var \App\Model\Entity\Room $room
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
+
+<?php
+$this->assign('title', __('Edit Room'));
+$this->Breadcrumbs->add([
+    ['title' => __('Home'), 'url' => '/'],
+    ['title' => __('List Rooms'), 'url' => ['action' => 'index']],
+    ['title' => __('View'), 'url' => ['action' => 'view', $room->id]],
+    ['title' => __('Edit')],
+]);
+?>
+
+<div class="card card-primary card-outline">
+    <?= $this->Form->create($room) ?>
+    <div class="card-body">
+        <?= $this->Form->control('name') ?>
+        <?= $this->Form->control('address1') ?>
+        <?= $this->Form->control('address2') ?>
+        <?= $this->Form->control('address3') ?>
+        <?= $this->Form->control('city_name') ?>
+        <?= $this->Form->control('state') ?>
+    </div>
+    <div class="card-footer d-flex">
+        <div class="mr-auto">
             <?= $this->Form->postLink(
                 __('Delete'),
                 ['action' => 'delete', $room->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $room->id), 'class' => 'side-nav-item']
+                ['confirm' => __('Are you sure you want to delete # {0}?', $room->id), 'class' => 'btn btn-danger']
             ) ?>
-            <?= $this->Html->link(__('List Rooms'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
-    </aside>
-    <div class="column column-80">
-        <div class="rooms form content">
-            <?= $this->Form->create($room) ?>
-            <fieldset>
-                <legend><?= __('Edit Room') ?></legend>
-                <?php
-                    echo $this->Form->control('name');
-                    echo $this->Form->control('address1');
-                    echo $this->Form->control('address2');
-                    echo $this->Form->control('address3');
-                    echo $this->Form->control('city_name');
-                    echo $this->Form->control('state');
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
+        <div class="ml-auto">
+            <?= $this->Form->button(__('Save'), ['class' => 'btn btn-primary']) ?>
+            <?= $this->Html->link(__('Cancel'), ['action' => 'view', $room->id], ['class' => 'btn btn-default']) ?>
         </div>
     </div>
+    <?= $this->Form->end() ?>
 </div>
