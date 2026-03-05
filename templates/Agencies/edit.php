@@ -2,6 +2,7 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Agency $agency
+ * @var \Cake\Collection\CollectionInterface|string[] $users
  */
 ?>
 
@@ -19,7 +20,7 @@ $this->Breadcrumbs->add([
     <?= $this->Form->create($agency) ?>
     <div class="card-body">
         <?= $this->Form->control('name') ?>
-        <?= $this->Form->control('users._ids', ['options' => $users]) ?>
+        <?= $this->Form->control('users._ids', ['options' => $users ?? []]) ?>
     </div>
     <div class="card-footer d-flex">
         <div class="mr-auto">
