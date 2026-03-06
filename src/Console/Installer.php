@@ -63,12 +63,57 @@ class Installer
 
         static::createAppLocalConfig($rootDir, $io);
         static::createWritableDirectories($rootDir, $io);
+        static::createAdminLteSymlink($rootDir, $io);
 
         static::setFolderPermissions($rootDir, $io);
         static::setSecuritySalt($rootDir, $io);
 
         if (class_exists(CodeceptionInstaller::class)) {
             CodeceptionInstaller::customizeCodeceptionBinary($event);
+        }
+    }
+
+    /**
+     * Create a portable symlink for AdminLTE assets in webroot.
+     *
+     * @param string $dir The application's root directory.
+     * @param \Composer\IO\IOInterface $io IO interface to write to console.
+     * @return void
+     */
+    public static function createAdminLteSymlink(string $dir, IOInterface $io): void
+    {
+        $adminLteDir = $dir . '/vendor/almasaeed2010/adminlte';
+        $webrootLink = $dir . '/webroot/adminlte';
+        $relativeTarget = '../vendor/almasaeed2010/adminlte';
+
+        if (!is_dir($adminLteDir)) {
+            $io->write('Skipped AdminLTE symlink: vendor/almasaeed2010/adminlte not found.');
+
+            return;
+        }
+
+        if (is_link($webrootLink)) {
+            $currentTarget = readlink($webrootLink);
+            if ($currentTarget === $relativeTarget) {
+                return;
+            }
+            unlink($webrootLink);
+        } elseif (file_exists($webrootLink)) {
+            $io->write('Skipped AdminLTE symlink: webroot/adminlte already exists and is not a symlink.');
+
+            return;
+        }
+
+        if (!function_exists('symlink')) {
+            $io->write('Skipped AdminLTE symlink: symlink() is not available on this system.');
+
+            return;
+        }
+
+        if (symlink($relativeTarget, $webrootLink)) {
+            $io->write('Created `webroot/adminlte` symlink');
+        } else {
+            $io->write('Failed to create `webroot/adminlte` symlink');
         }
     }
 

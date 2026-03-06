@@ -18,7 +18,7 @@ class UsersController extends AppController
     public function initialize(): void
     {
         parent::initialize();
-        $this->Authentication->allowUnauthenticated(['login', 'logout','add','index','view','edit']);
+        $this->Authentication->allowUnauthenticated(['login', 'logout', 'add', 'index', 'view', 'edit']);
     }
 
     /**
@@ -28,6 +28,8 @@ class UsersController extends AppController
      */
     public function login()
     {
+        $this->viewBuilder()->setLayout('CakeLte.login');
+
         $result = $this->Authentication->getResult();
         if ($result && $result->isValid()) {
             return $this->redirect(['action' => 'index']);
@@ -36,6 +38,7 @@ class UsersController extends AppController
             $this->Flash->error(__('Invalid username or password'));
         }
     }
+
 
     /**
      * Logout method

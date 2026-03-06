@@ -56,3 +56,20 @@ Other environment agnostic settings can be changed in `config/app.php`.
 The app skeleton uses [Milligram](https://milligram.io/) (v1.3) minimalist CSS
 framework by default. You can, however, replace it with any other library or
 custom styles.
+
+## AdminLTE Theme
+
+This project uses `arodu/cakelte` (AdminLTE for CakePHP).
+
+After cloning or pulling, run:
+
+```bash
+composer install
+```
+
+Composer post-install hooks create the `webroot/adminlte` symlink automatically.
+If it is still missing, run:
+
+```bash
+php bin/cake.php cakelte install
+```
