@@ -97,6 +97,13 @@ if (file_exists(CONFIG . 'app_local.php')) {
 }
 
 /*
+ * Load CakeLte configuration
+ */
+if (file_exists(CONFIG . 'cakelte.php')) {
+    Configure::load('cakelte', 'default');
+}
+
+/*
  * When debug = true the metadata cache should only last for a short time.
  */
 if (Configure::read('debug')) {

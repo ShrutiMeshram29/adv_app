@@ -5,32 +5,37 @@
  * @var string[]|\Cake\Collection\CollectionInterface $agencies
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $user->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'side-nav-item']
-            ) ?>
-            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column column-80">
-        <div class="users form content">
-            <?= $this->Form->create($user) ?>
-            <fieldset>
-                <legend><?= __('Edit User') ?></legend>
-                <?php
-                    echo $this->Form->control('full_name');
-                    echo $this->Form->control('username');
-                    echo $this->Form->control('password');
-                    echo $this->Form->control('agencies._ids', ['options' => $agencies]);
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
+<?php
+$this->assign('title', __('Edit User'));
+$this->Breadcrumbs->add([
+    ['title' => __('Home'), 'url' => '/'],
+    ['title' => __('List Users'), 'url' => ['action' => 'index']],
+    ['title' => __('Edit')],
+]);
+?>
+
+<div class="card card-primary card-outline">
+    <?= $this->Form->create($user) ?>
+    <div class="card-body">
+        <?= $this->Form->control('full_name', ['label' => __('Full Name')]) ?>
+        <?= $this->Form->control('username', ['label' => __('Username')]) ?>
+        <?= $this->Form->control('password', [
+            'label' => __('Password'),
+            'required' => false,
+            'placeholder' => __('Leave empty to keep current password')
+        ]) ?>
+        <?= $this->Form->control('agencies._ids', [
+            'label' => __('Agencies'),
+            'options' => $agencies,
+            'multiple' => true,
+            'class' => 'form-control select2'
+        ]) ?>
+    </div>
+    <div class="card-footer d-flex">
+        <div class="ml-auto">
+            <?= $this->Form->button(__('Save'), ['class' => 'btn btn-primary']) ?>
+            <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default']) ?>
         </div>
     </div>
+    <?= $this->Form->end() ?>
 </div>

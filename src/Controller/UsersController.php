@@ -11,6 +11,44 @@ namespace App\Controller;
 class UsersController extends AppController
 {
     /**
+     * Initialization hook
+     *
+     * @return void
+     */
+    public function initialize(): void
+    {
+        parent::initialize();
+        $this->Authentication->allowUnauthenticated(['login', 'logout','add','index','view','edit']);
+    }
+
+    /**
+     * Login method
+     *
+     * @return \Cake\Http\Response|null
+     */
+    public function login()
+    {
+        $result = $this->Authentication->getResult();
+        if ($result && $result->isValid()) {
+            return $this->redirect(['action' => 'index']);
+        }
+        if ($this->request->is('post') && !$result->isValid()) {
+            $this->Flash->error(__('Invalid username or password'));
+        }
+    }
+
+    /**
+     * Logout method
+     *
+     * @return \Cake\Http\Response
+     */
+    public function logout()
+    {
+        $this->Authentication->logout();
+        return $this->redirect(['action' => 'login']);
+    }
+
+    /**
      * Index method
      *
      * @return \Cake\Http\Response|null|void Renders view

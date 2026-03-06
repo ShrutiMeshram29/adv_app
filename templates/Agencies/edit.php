@@ -20,7 +20,12 @@ $this->Breadcrumbs->add([
     <?= $this->Form->create($agency) ?>
     <div class="card-body">
         <?= $this->Form->control('name') ?>
-        <?= $this->Form->control('users._ids', ['options' => $users ?? []]) ?>
+        <?= $this->Form->control('users._ids', [
+            'options' => $users ?? [],
+            'class' => 'select2',
+            'label' => __('Users'),
+            'data-placeholder' => __('Select users')
+        ]) ?>
     </div>
     <div class="card-footer d-flex">
         <div class="mr-auto">

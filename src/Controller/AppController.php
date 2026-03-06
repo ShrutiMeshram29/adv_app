@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Cake\Controller\Controller;
+use CakeLte\View\CakeLteView;
 
 /**
  * Application Controller
@@ -43,10 +44,17 @@ class AppController extends Controller
 
         $this->loadComponent('Flash');
 
+        // Load Authentication and Authorization components
+        $this->loadComponent('Authentication.Authentication');
+        $this->loadComponent('Authorization.Authorization');
+
+        // Use CakeLte layout for AdminLTE theme
+        $this->viewBuilder()->setClassName(CakeLteView::class);
+
         /*
          * Enable the following component for recommended CakePHP form protection settings.
          * see https://book.cakephp.org/5/en/controllers/components/form-protection.html
          */
-        //$this->loadComponent('FormProtection');
+        // $this->loadComponent('FormProtection');
     }
 }

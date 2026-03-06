@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use Authentication\PasswordHasher\DefaultPasswordHasher;
 use Cake\ORM\Query\SelectQuery;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -94,5 +95,20 @@ class UsersTable extends Table
         $rules->add($rules->isUnique(['username']), ['errorField' => 'username']);
 
         return $rules;
+    }
+
+    /**
+     * Before save hook to hash passwords.
+     *
+     * @param \Cake\Event\EventInterface $event The beforeSave event.
+     * @param \Cake\Datasource\EntityInterface $entity The user entity.
+     * @return void
+     */
+    public function beforeSave(\Cake\Event\EventInterface $event, \Cake\Datasource\EntityInterface $entity): void
+    {
+        if ($entity->isDirty('password')) {
+            $hasher = new DefaultPasswordHasher();
+            $entity->password = $hasher->hash($entity->password);
+        }
     }
 }
