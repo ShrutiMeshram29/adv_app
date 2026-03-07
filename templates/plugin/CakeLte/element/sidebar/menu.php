@@ -18,6 +18,20 @@ $menu = [
             ],
         ],
     ],
+    'users' => [
+        'label' => __('Users'),
+        'icon' => 'fas fa-tachometer-alt',
+        'dropdown' => [
+            'addUser' => [
+                'label' => __('Add Users'),
+                'uri' => ['controller' => 'Users', 'action' => 'add', 'plugin' => false],
+            ],
+            'listOfUsers' => [
+                'label' => __('List Of Users'),
+                'uri' => ['controller' => 'Users', 'action' => 'index', 'plugin' => false],
+            ],
+        ],
+    ],
     'simpleLink' => [
         'label' => __('Simple Link'),
         'badge' => ['text' => __('New'), 'color' => 'danger'],
@@ -34,7 +48,7 @@ echo $this->MenuLte->render($menu);
 
 /*
 - To activate an item, you can pass the `active` variable, or use method `activeItem` from the template
-    Example: 
+    Example:
         $this->MenuLte->activeItem('startPages.activePage');
 
 - It is also possible to create the menu using the html code
