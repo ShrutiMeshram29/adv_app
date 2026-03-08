@@ -46,4 +46,14 @@ class User extends Entity
     protected array $_hidden = [
         'password',
     ];
+
+
+// Add this method
+protected function _setPassword(string $password): ?string
+{
+    if (mb_strlen($password) > 0) {
+        return (new DefaultPasswordHasher())->hash($password);
+    }
+    return null;
+}
 }

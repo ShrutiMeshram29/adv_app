@@ -93,7 +93,9 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
             // https://book.cakephp.org/5/en/controllers/middleware.html#body-parser-middleware
             ->add(new BodyParserMiddleware())
 
-            // Authentication Middleware
+            ->add(new AuthenticationMiddleware($this)) //added for auth
+
+        // Authentication Middleware
             // Load the AuthenticationMiddleware. Should be after routing and body parser
             // middleware.
             ->add(new AuthenticationMiddleware($this))
@@ -149,6 +151,41 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
                     'identifier' => 'Authentication.Password',
                     'loginUrl' => '/users/login',
                 ],
+            ],
+        ]);
+
+        return $service;
+        $service = new AuthenticationService();
+
+        // Define where users should be redirected to when they are not authenticated
+        $service->setConfig([
+            'unauthenticatedRedirect' => [
+                'prefix' => false,
+                'plugin' => null,
+                'controller' => 'Users',
+                'action' => 'login',
+            ],
+            'queryParam' => 'redirect',
+        ]);
+
+        $fields = [
+            PasswordIdentifier::CREDENTIAL_USERNAME => 'email',
+            PasswordIdentifier::CREDENTIAL_PASSWORD => 'password',
+        ];
+
+        // Load the authenticators. Session should be first.
+        $service->loadAuthenticator('Authentication.Session');
+        $service->loadAuthenticator('Authentication.Form', [
+            'fields' => $fields,
+            'loginUrl' => [
+                'prefix' => false,
+                'plugin' => null,
+                'controller' => 'Users',
+                'action' => 'login',
+            ],
+            'identifier' => [
+                'className' => 'Authentication.Password',
+                'fields' => $fields,
             ],
         ]);
 
