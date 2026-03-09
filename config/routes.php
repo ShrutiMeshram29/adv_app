@@ -22,6 +22,15 @@
  */
 
 use Cake\Routing\Route\DashedRoute;
+
+$routes->prefix('Api', function (RouteBuilder $routes) {
+     $routes->setExtensions(['json', 'xml']);
+    // All routes here will be prefixed with `/admin`, and
+    // have the `'prefix' => 'Admin'` route element added that
+    // will be required when generating URLs for these routes
+    $routes->fallbacks(DashedRoute::class);
+});
+
 use Cake\Routing\RouteBuilder;
 
 /*

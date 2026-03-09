@@ -93,11 +93,6 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
             // https://book.cakephp.org/5/en/controllers/middleware.html#body-parser-middleware
             ->add(new BodyParserMiddleware())
 
-            ->add(new AuthenticationMiddleware($this)) //added for auth
-
-        // Authentication Middleware
-            // Load the AuthenticationMiddleware. Should be after routing and body parser
-            // middleware.
             ->add(new AuthenticationMiddleware($this))
 
             // Cross Site Request Forgery (CSRF) Protection Middleware
@@ -144,48 +139,20 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
      */
     public function getAuthenticationService(ServerRequestInterface $request): AuthenticationServiceInterface
     {
-        $service = new AuthenticationService([
-            'authenticators' => [
-                'Authentication.Session',
-                'Authentication.Form' => [
-                    'identifier' => 'Authentication.Password',
-                    'loginUrl' => '/users/login',
-                ],
-            ],
-        ]);
-
-        return $service;
         $service = new AuthenticationService();
 
         // Define where users should be redirected to when they are not authenticated
         $service->setConfig([
-            'unauthenticatedRedirect' => [
-                'prefix' => false,
-                'plugin' => null,
-                'controller' => 'Users',
-                'action' => 'login',
-            ],
+            'unauthenticatedRedirect' => '/users/login',
             'queryParam' => 'redirect',
         ]);
 
-        $fields = [
-            PasswordIdentifier::CREDENTIAL_USERNAME => 'email',
-            PasswordIdentifier::CREDENTIAL_PASSWORD => 'password',
-        ];
-
-        // Load the authenticators. Session should be first.
+        // Load authenticators
         $service->loadAuthenticator('Authentication.Session');
         $service->loadAuthenticator('Authentication.Form', [
-            'fields' => $fields,
-            'loginUrl' => [
-                'prefix' => false,
-                'plugin' => null,
-                'controller' => 'Users',
-                'action' => 'login',
-            ],
+            'loginUrl' => '/users/login',
             'identifier' => [
                 'className' => 'Authentication.Password',
-                'fields' => $fields,
             ],
         ]);
 
