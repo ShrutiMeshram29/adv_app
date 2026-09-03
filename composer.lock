@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f2ad242a7982439adbdd594e71b536ee",
+    "content-hash": "b89016c0fef229c4c5312c46177b0752",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
-            "version": "v3.2.0",
+            "version": "v4.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ColorlibHQ/AdminLTE.git",
-                "reference": "bd4d9c72931f1dd28601b6bfb387554a381ad540"
+                "reference": "a3702d79b95573eadef771f67065a9033cb4338b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ColorlibHQ/AdminLTE/zipball/bd4d9c72931f1dd28601b6bfb387554a381ad540",
-                "reference": "bd4d9c72931f1dd28601b6bfb387554a381ad540",
+                "url": "https://api.github.com/repos/ColorlibHQ/AdminLTE/zipball/a3702d79b95573eadef771f67065a9033cb4338b",
+                "reference": "a3702d79b95573eadef771f67065a9033cb4338b",
                 "shasum": ""
             },
             "type": "library",
@@ -45,28 +45,40 @@
             ],
             "support": {
                 "issues": "https://github.com/ColorlibHQ/AdminLTE/issues",
-                "source": "https://github.com/ColorlibHQ/AdminLTE/tree/v3.2.0"
+                "source": "https://github.com/ColorlibHQ/AdminLTE/tree/v4.9.1"
             },
-            "time": "2022-02-07T20:33:09+00:00"
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/daniel007in",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/danny007in",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-08-26T09:18:41+00:00"
         },
         {
             "name": "arodu/cakelte",
-            "version": "v2.0.1",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/arodu/cakelte.git",
-                "reference": "0077bdd47e848122d665f55fa391cad067e8b454"
+                "reference": "e46d3ab82db9579540f83ce73401ae90e92beaa7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/arodu/cakelte/zipball/0077bdd47e848122d665f55fa391cad067e8b454",
-                "reference": "0077bdd47e848122d665f55fa391cad067e8b454",
+                "url": "https://api.github.com/repos/arodu/cakelte/zipball/e46d3ab82db9579540f83ce73401ae90e92beaa7",
+                "reference": "e46d3ab82db9579540f83ce73401ae90e92beaa7",
                 "shasum": ""
             },
             "require": {
-                "almasaeed2010/adminlte": "^3.2",
+                "almasaeed2010/adminlte": "^4.4",
+                "arodu/cakephp-bootstrap-tools": "^2.2",
                 "cakephp/cakephp": "^5.0",
-                "friendsofcake/bootstrap-ui": "^5.0"
+                "friendsofcake/bootstrap-ui": "^5.0",
+                "php": ">=8.2"
             },
             "require-dev": {
                 "cakedc/cakephp-phpstan": "^3.1",
@@ -87,9 +99,88 @@
             "description": "CakeLTE: AdminLTE plugin for CakePHP",
             "support": {
                 "issues": "https://github.com/arodu/cakelte/issues",
-                "source": "https://github.com/arodu/cakelte/tree/v2.0.1"
+                "source": "https://github.com/arodu/cakelte/tree/v3.0.1"
             },
-            "time": "2024-03-05T11:41:23+00:00"
+            "time": "2026-08-23T14:42:13+00:00"
+        },
+        {
+            "name": "arodu/cakephp-bootstrap-tools",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/arodu/cakephp-bootstrap-tools.git",
+                "reference": "763c5947878838a5b0737345d3de9516958edc60"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/arodu/cakephp-bootstrap-tools/zipball/763c5947878838a5b0737345d3de9516958edc60",
+                "reference": "763c5947878838a5b0737345d3de9516958edc60",
+                "shasum": ""
+            },
+            "require": {
+                "arodu/cakephp-utility-kit": "^1.1",
+                "cakephp/cakephp": "^5.0.1",
+                "php": ">=8.2"
+            },
+            "require-dev": {
+                "cakephp/cakephp-codesniffer": "^5.3",
+                "phpunit/phpunit": "^10.1"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "BootstrapTools\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Bootstrap Tools for CakePHP",
+            "support": {
+                "issues": "https://github.com/arodu/cakephp-bootstrap-tools/issues",
+                "source": "https://github.com/arodu/cakephp-bootstrap-tools/tree/2.2.0"
+            },
+            "time": "2026-08-18T20:54:38+00:00"
+        },
+        {
+            "name": "arodu/cakephp-utility-kit",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/arodu/cakephp-utility-kit.git",
+                "reference": "a0a46c781d9f7962371e2b97488a371bfd762074"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/arodu/cakephp-utility-kit/zipball/a0a46c781d9f7962371e2b97488a371bfd762074",
+                "reference": "a0a46c781d9f7962371e2b97488a371bfd762074",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "^5.0.1",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "cakephp/cakephp-codesniffer": "^5.3",
+                "phpunit/phpunit": "^10.1"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "UtilityKit\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "UtilityKit plugin for CakePHP",
+            "support": {
+                "issues": "https://github.com/arodu/cakephp-utility-kit/issues",
+                "source": "https://github.com/arodu/cakephp-utility-kit/tree/1.1.0"
+            },
+            "time": "2026-08-18T18:00:27+00:00"
         },
         {
             "name": "cakephp/authentication",
@@ -227,16 +318,16 @@
         },
         {
             "name": "cakephp/cakephp",
-            "version": "5.3.2",
+            "version": "5.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "5c7abec3348523d6d1ef693e448eba50d9bc7eae"
+                "reference": "c0d21e0da4216d51268691af3ad803f0eecb3a11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/5c7abec3348523d6d1ef693e448eba50d9bc7eae",
-                "reference": "5c7abec3348523d6d1ef693e448eba50d9bc7eae",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/c0d21e0da4216d51268691af3ad803f0eecb3a11",
+                "reference": "c0d21e0da4216d51268691af3ad803f0eecb3a11",
                 "shasum": ""
             },
             "require": {
@@ -299,7 +390,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-5.next": "5.3.x-dev"
+                    "dev-5.next": "5.4.x-dev"
                 }
             },
             "autoload": {
@@ -344,20 +435,20 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/cakephp"
             },
-            "time": "2026-02-25T04:07:32+00:00"
+            "time": "2026-07-14T03:04:24+00:00"
         },
         {
             "name": "cakephp/chronos",
-            "version": "3.3.1",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/chronos.git",
-                "reference": "1e417fdd4a3c6602b6c4634cf54aa9b065127fa2"
+                "reference": "e6e777b534244911566face8a5dbdbd7f7bda5a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/chronos/zipball/1e417fdd4a3c6602b6c4634cf54aa9b065127fa2",
-                "reference": "1e417fdd4a3c6602b6c4634cf54aa9b065127fa2",
+                "url": "https://api.github.com/repos/cakephp/chronos/zipball/e6e777b534244911566face8a5dbdbd7f7bda5a6",
+                "reference": "e6e777b534244911566face8a5dbdbd7f7bda5a6",
                 "shasum": ""
             },
             "require": {
@@ -369,7 +460,7 @@
             },
             "require-dev": {
                 "cakephp/cakephp-codesniffer": "^5.0",
-                "phpunit/phpunit": "^10.5.58 || ^11.1.3"
+                "phpunit/phpunit": "^10.5.58 || ^11.5.3 || ^12.1.3"
             },
             "type": "library",
             "autoload": {
@@ -403,7 +494,7 @@
                 "issues": "https://github.com/cakephp/chronos/issues",
                 "source": "https://github.com/cakephp/chronos"
             },
-            "time": "2025-10-30T13:08:23+00:00"
+            "time": "2026-04-10T02:50:39+00:00"
         },
         {
             "name": "cakephp/migrations",
@@ -517,16 +608,16 @@
         },
         {
             "name": "composer/ca-bundle",
-            "version": "1.5.10",
+            "version": "1.5.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "961a5e4056dd2e4a2eedcac7576075947c28bf63"
+                "reference": "0c8abba0634f637bd78c4e451981da368d403463"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/961a5e4056dd2e4a2eedcac7576075947c28bf63",
-                "reference": "961a5e4056dd2e4a2eedcac7576075947c28bf63",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/0c8abba0634f637bd78c4e451981da368d403463",
+                "reference": "0c8abba0634f637bd78c4e451981da368d403463",
                 "shasum": ""
             },
             "require": {
@@ -573,7 +664,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/ca-bundle/issues",
-                "source": "https://github.com/composer/ca-bundle/tree/1.5.10"
+                "source": "https://github.com/composer/ca-bundle/tree/1.5.14"
             },
             "funding": [
                 {
@@ -585,29 +676,30 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-12-08T15:06:51+00:00"
+            "time": "2026-08-21T14:57:29+00:00"
         },
         {
             "name": "friendsofcake/bootstrap-ui",
-            "version": "5.1.3",
+            "version": "5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfCake/bootstrap-ui.git",
-                "reference": "1c197b9d49c5271057a0c74a264909c76c435015"
+                "reference": "a238d5279611a9341d14e065879123ecf299693f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfCake/bootstrap-ui/zipball/1c197b9d49c5271057a0c74a264909c76c435015",
-                "reference": "1c197b9d49c5271057a0c74a264909c76c435015",
+                "url": "https://api.github.com/repos/FriendsOfCake/bootstrap-ui/zipball/a238d5279611a9341d14e065879123ecf299693f",
+                "reference": "a238d5279611a9341d14e065879123ecf299693f",
                 "shasum": ""
             },
             "require": {
-                "cakephp/cakephp": "^5.1.4"
+                "cakephp/cakephp": "^5.1.4",
+                "php": ">=8.2"
             },
             "require-dev": {
                 "cakephp/bake": "^3.0",
                 "cakephp/cakephp-codesniffer": "^5.1",
-                "phpunit/phpunit": "^10.5.58 || ^11.5.3 || ^12.4"
+                "phpunit/phpunit": "^11.5.3 || ^12.4 || ^13.0"
             },
             "type": "cakephp-plugin",
             "autoload": {
@@ -641,7 +733,7 @@
                 "issues": "http://github.com/friendsofcake/bootstrap-ui/issues",
                 "source": "http://github.com/friendsofcake/bootstrap-ui"
             },
-            "time": "2026-02-19T18:02:12+00:00"
+            "time": "2026-06-17T06:50:29+00:00"
         },
         {
             "name": "friendsofcake/crud",
@@ -881,21 +973,22 @@
         },
         {
             "name": "league/container",
-            "version": "5.1.0",
+            "version": "5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/container.git",
-                "reference": "041c52d266763887fff2256fb5dc9392d808f8f3"
+                "reference": "58accbc032f0090a9bd08326f93062c5a658b2c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/container/zipball/041c52d266763887fff2256fb5dc9392d808f8f3",
-                "reference": "041c52d266763887fff2256fb5dc9392d808f8f3",
+                "url": "https://api.github.com/repos/thephpleague/container/zipball/58accbc032f0090a9bd08326f93062c5a658b2c5",
+                "reference": "58accbc032f0090a9bd08326f93062c5a658b2c5",
                 "shasum": ""
             },
             "require": {
                 "php": "^8.1",
-                "psr/container": "^2.0.2"
+                "psr/container": "^2.0.2",
+                "psr/event-dispatcher": "^1.0"
             },
             "provide": {
                 "psr/container-implementation": "^1.0"
@@ -952,7 +1045,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/container/issues",
-                "source": "https://github.com/thephpleague/container/tree/5.1.0"
+                "source": "https://github.com/thephpleague/container/tree/5.2.0"
             },
             "funding": [
                 {
@@ -960,7 +1053,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-05-28T07:37:56+00:00"
+            "time": "2026-03-19T18:52:39+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -1126,6 +1219,56 @@
                 "source": "https://github.com/php-fig/container/tree/2.0.2"
             },
             "time": "2021-11-05T16:47:00+00:00"
+        },
+        {
+            "name": "psr/event-dispatcher",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/event-dispatcher.git",
+                "reference": "dbefd12671e8a14ec7f180cab83036ed26714bb0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/event-dispatcher/zipball/dbefd12671e8a14ec7f180cab83036ed26714bb0",
+                "reference": "dbefd12671e8a14ec7f180cab83036ed26714bb0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\EventDispatcher\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Standard interfaces for event handling.",
+            "keywords": [
+                "events",
+                "psr",
+                "psr-14"
+            ],
+            "support": {
+                "issues": "https://github.com/php-fig/event-dispatcher/issues",
+                "source": "https://github.com/php-fig/event-dispatcher/tree/1.0.0"
+            },
+            "time": "2019-01-08T18:20:26+00:00"
         },
         {
             "name": "psr/http-client",
